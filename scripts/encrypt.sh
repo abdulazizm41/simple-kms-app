@@ -3,7 +3,7 @@
 PAYLOAD=`cat -`
 
 for i in ${PAYLOAD}; do
-  curl -k -XPOST "http://192.168.56.103:8000/encrypt" \
+  curl -k -XPOST "http://127.0.0.1:8000/encrypt" \
           -H "Content-Type: application/json" \
           -d'{"payload": "'${i}'"}' 2> /dev/null
   echo
