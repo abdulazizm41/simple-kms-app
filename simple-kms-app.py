@@ -15,8 +15,6 @@ from pydantic import BaseModel
 class PayLoad(BaseModel):
     payload: str
 
-app = FastAPI()
-
 class KeyManagementStore:
     def __init__(self):
         self.db_path = "./edb_kms.db"
@@ -92,6 +90,7 @@ class KeyManagementStore:
         else:
             return None
 
+app = FastAPI()
 kms = KeyManagementStore()
 
 @app.post("/encrypt")
