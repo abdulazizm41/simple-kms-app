@@ -79,19 +79,19 @@ The scripts for encryption and decryption are provided in the `scripts` director
 #### Encrypt
 ```bash
   # raw.txt
-  cat raw.txt | base64 | /usr/bin/sh ./scripts/encrypt.sh > raw.txt.enc
+  cat ./samples/raw.txt | base64 | /usr/bin/sh ./scripts/encrypt.sh > ./samples/raw.txt.enc
   
   # key.bin
-  cat key.bin | base64 | /usr/bin/sh ./scripts/encrypt.sh > key.bin.enc
+  cat ./samples/key.bin | base64 | /usr/bin/sh ./scripts/encrypt.sh > ./samples/key.bin.enc
 ```
 
 #### Decrypt
 ```bash
   # raw.txt.enc
-  /usr/bin/sh ./scripts/decrypt.sh $(cat raw.txt.enc) | base64 -di
+  /usr/bin/sh ./scripts/decrypt.sh $(cat ./samples/raw.txt.enc) | base64 -di
 
   # key.bin.enc
-  /usr/bin/sh ./scripts/decrypt.sh $(cat key.bin.enc) | base64 -di
+  /usr/bin/sh ./scripts/decrypt.sh $(cat ./samples/key.bin.enc) | base64 -di
 ```
 ## Usage (EnterpriseDB TDE)
 TDE features are available starting from EDB version 15 and up. To use this `simple-kms-app` together with EDB, pass the command into `--key-wrap-command` and `--key-unwrap-command` when initializing database for the first time. Below command is tested using EDB version 16.
