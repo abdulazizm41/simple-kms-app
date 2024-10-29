@@ -36,6 +36,11 @@ Run the app. By default, it listens to all addresses on the machine (`0.0.0.0`) 
 python3 ./simple-kms-app.py
 ```
 
+Or run the app in the background.
+```bash
+python3 ./simple-kms-app.py > /PATH/TO/simple-kms-app.log 2>&1 &
+```
+
 ## API Reference
 #### Encrypt plaintext
 ```bash
