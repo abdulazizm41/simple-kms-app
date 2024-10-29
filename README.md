@@ -6,24 +6,24 @@ Simple KMS app written using Python for testing TDE feature on EnterpriseDB data
 - sqlite3
 
 ## Installation
-Install some required packages. If using RHEL operating system, use the following command
+Install some required packages. If using RHEL operating system, use the following command.
 ```bash
   yum -y install python3 sqlite wget unzip netcat
 ```
 
-Create Python virtual environments using `venv`
+Create Python virtual environments using `venv`.
 ```bash
   python3 -m venv /PATH/TO/simple-kms-app
 ```
 
-Download as `.zip` and extract it inside Python virtual environments directory
+Download as `.zip` and extract it inside Python virtual environments directory.
 ```bash
   wget https://github.com/abdulazizm41/simple-kms-app/archive/refs/heads/main.zip
   unzip ./main.zip
   mv simple-kms-app-main/* /PATH/TO/simple-kms-app
 ```
 
-Activate Python virtual environments, upgrade `pip`, then install `requirements.txt`
+Activate Python virtual environments, upgrade `pip`, then install `requirements.txt`.
 ```bash
   cd /PATH/TO/simple-kms-app
   source ./bin/activate
@@ -31,7 +31,7 @@ Activate Python virtual environments, upgrade `pip`, then install `requirements.
   pip install -r ./requirements.txt
 ```
 
-Run the app. By default, it listens to all addresses on the machine (`0.0.0.0`) and port `8000`
+Run the app. By default, it listens to all addresses on the machine (`0.0.0.0`) and port `8000`.
 ```bash
   python3 ./simple-kms-app.py
 ```
@@ -43,7 +43,7 @@ Run the app. By default, it listens to all addresses on the machine (`0.0.0.0`) 
 ```
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `payload` | `string` | **Required**. Plaintext to be encrypted |
+| `payload` | `string` | **Required**. Plaintext to be encrypted. |
 
 #### Decrypt encrypted text
 ```http
@@ -51,7 +51,7 @@ Run the app. By default, it listens to all addresses on the machine (`0.0.0.0`) 
 ```
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `payload` | `string` | **Required**. Encrypted text to be decrypted |
+| `payload` | `string` | **Required**. Encrypted text to be decrypted. |
 
 ## Usage (Basic)
 #### Encrypt
@@ -112,7 +112,7 @@ In this example, the data in the `tbfoo` table is encrypted. `The pg_relation_fi
    base/5/16416
 ```
 
-Grepping the data looking for characters doesn't return anything. Viewing the last five lines returns the encrypted data:
+Grepping the data looking for characters doesn't return anything. Viewing the last five lines returns the encrypted data.
 ```
   $ hexdump -C 16416 | grep abc
   $
