@@ -38,7 +38,7 @@ Run the app. By default, it listens to all addresses on the machine (`0.0.0.0`) 
 
 ## API Reference
 #### Encrypt plaintext
-```http
+```bash
   POST /encrypt
 ```
 | Parameter | Type     | Description                |
@@ -46,7 +46,7 @@ Run the app. By default, it listens to all addresses on the machine (`0.0.0.0`) 
 | `payload` | `string` | **Required**. Plaintext to be encrypted. |
 
 #### Decrypt encrypted text
-```http
+```bash
   POST /decrypt
 ```
 | Parameter | Type     | Description                       |
@@ -62,6 +62,7 @@ Run the app. By default, it listens to all addresses on the machine (`0.0.0.0`) 
 ```
 
 #### Decrypt
+Adjust the payload with the previously obtained encryption results.
 ```bash
   curl -XPOST "http://127.0.0.1:8000/decrypt" \
   -H "Content-Type: application/json" \
