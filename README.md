@@ -8,7 +8,7 @@ Simple KMS app written using Python for testing TDE feature on EnterpriseDB data
 ## Installation
 Install some required packages. If using RHEL operating system, use the following command
 ```bash
-  yum -y install wget unzip netcat
+  yum -y install python3 sqlite wget unzip netcat
 ```
 
 Create Python virtual environments using `venv`
