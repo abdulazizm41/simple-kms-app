@@ -70,7 +70,7 @@ curl -XPOST "http://127.0.0.1:8000/decrypt" \
 ```
 
 ## Usage (Advanced)
-The scripts for encryption and decryption are provided in the `scripts` directory, named `encrypt.sh` and `decrypt.sh` respectively. By default, it points to the ip `127.0.0.1` and port `8000`. Sample data is also provided in the `samples` directory. The `key.bin` file is a sample encryption key from the TDE feature on the EnterpriseDB platform database.
+The scripts for encryption and decryption are provided in the `scripts` directory, named `encrypt.sh` and `decrypt.sh` respectively. By default, it points to the ip `127.0.0.1` and port `8000`. Sample data is also provided in the `samples` directory. The `key.bin` file is a sample of encryption key in plain form, utilized by the TDE feature on the EnterpriseDB platform database.
 
 #### Encrypt
 ```bash
@@ -127,7 +127,7 @@ $ hexdump -C 16416 | tail -5
 ```
 
 ## Disclaimer
-This script is made for testing purposes only. I do not guarantee its security features. It is not related to and does not work with EnterpriseDB. For KMS that is officially supported by EnterpriseDB, you can see the official EDB documentation.
+This script is made for testing purposes only. I do not guarantee its security features. SSL is not supported yet. It is not related to and does not cooperating with EnterpriseDB. For KMS that is officially supported by EnterpriseDB, you can see the official EDB documentation.
  - [EDB Docs - Transparent Data Encryption](https://www.enterprisedb.com/docs/tde/latest/)
  - [EDB Docs - Securing the data encryption key](https://www.enterprisedb.com/docs/tde/latest/key_stores/)
 
