@@ -1,64 +1,57 @@
-
 # simple-kms-app
-
 Simple KMS app written using Python for testing TDE feature on EnterpriseDB database platform.
 
-
 ## Prerequisite
-- Python 3.x
+- Python 3.6 or 3.9
 - sqlite3
+
 ## Installation
+Install some required packages. If using RHEL operating system, use the following command
+```bash
+  yum -y install wget unzip netcat
+```
 
 Create Python virtual environments using `venv`
-
 ```bash
-  python3 -m venv /path/to/simple-kms-app
+  python3 -m venv /PATH/TO/simple-kms-app
 ```
-Download as `.zip` and extract it inside Python virtual environments directory
 
+Download as `.zip` and extract it inside Python virtual environments directory
 ```bash
   wget https://github.com/abdulazizm41/simple-kms-app/archive/refs/heads/main.zip
   unzip ./main.zip
-  mv simple-kms-app-main/* /path/to/simple-kms-app
+  mv simple-kms-app-main/* /PATH/TO/simple-kms-app
 ```
-Activate Python virtual environments, upgrade `pip`, then install `requirements.txt`
 
+Activate Python virtual environments, upgrade `pip`, then install `requirements.txt`
 ```bash
-  cd /path/to/simple-kms-app
+  cd /PATH/TO/simple-kms-app
   source ./bin/activate
   pip install --upgrade pip
   pip install -r ./requirements.txt
 ```
-Run the app. By default, it listens to all addresses on the machine (`0.0.0.0`) and port `8000`
 
+Run the app. By default, it listens to all addresses on the machine (`0.0.0.0`) and port `8000`
 ```bash
   python3 ./simple-kms-app.py
 ```
 
 ## API Reference
-
 #### Encrypt plaintext
-
 ```http
   POST /encrypt
 ```
-
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
 | `payload` | `string` | **Required**. Plaintext to be encrypted |
 
 #### Decrypt encrypted text
-
 ```http
   POST /decrypt
 ```
-
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `payload` | `string` | **Required**. Encrypted text to be decrypted |
-
-
-
 
 ## Usage (Basic)
 #### Encrypt
@@ -77,6 +70,7 @@ Run the app. By default, it listens to all addresses on the machine (`0.0.0.0`) 
 
 ## Usage (Advanced)
 The scripts for encryption and decryption are provided in the `scripts` directory, named `encrypt.sh` and `decrypt.sh` respectively. By default, it points to the ip `127.0.0.1` and port `8000`. Sample data is also provided in the `samples` directory. The `key.bin` file is a sample encryption key from the TDE feature on the EnterpriseDB platform database.
+
 #### Encrypt
 ```bash
   # raw.txt
@@ -94,13 +88,15 @@ The scripts for encryption and decryption are provided in the `scripts` director
   # key.bin.enc
   /usr/bin/sh ./scripts/decrypt.sh $(cat ./samples/key.bin.enc) | base64 -di
 ```
+
 ## Usage (EnterpriseDB TDE)
 TDE features are available starting from EDB version 15 and up. To use this `simple-kms-app` together with EDB, pass the command into `--key-wrap-command` and `--key-unwrap-command` when initializing database for the first time. Below command is tested using EDB version 16.
+
 #### Initialize the database
 ```bash
-  initdb -A scram-sha-256 -D $PGDATA -k -U enterprisedb -W --data-encryption=256 \
-  --key-wrap-command='base64 | /usr/bin/sh /path/to/scripts/encrypt.sh > %p' \
-  --key-unwrap-command='/usr/bin/sh /path/to/scripts/decrypt.sh $(cat %p) | base64 -di'
+  initdb -A scram-sha-256 -D $PGDATA -k -U enterprisedb -W --data-encryption \
+  --key-wrap-command='base64 | /usr/bin/sh /PATH/TO/scripts/encrypt.sh > %p' \
+  --key-unwrap-command='/usr/bin/sh /PATH/TO/scripts/decrypt.sh $(cat %p) | base64 -di'
 ```
 
 #### How is data stored on disk with TDE?
@@ -115,6 +111,7 @@ In this example, the data in the `tbfoo` table is encrypted. `The pg_relation_fi
   ----------------------
    base/5/16416
 ```
+
 Grepping the data looking for characters doesn't return anything. Viewing the last five lines returns the encrypted data:
 ```
   $ hexdump -C 16416 | grep abc
@@ -127,12 +124,11 @@ Grepping the data looking for characters doesn't return anything. Viewing the la
   00001ff0  fe 4f 07 50 06 b7 ef 6a  cd f9 84 96 b2 4b 25 12  |.O.P...j.....K%.|
   00002000
 ```
+
 ## Disclaimer
 This script is made for testing purposes only. I do not guarantee its security features. It is not related to and does not work with EnterpriseDB. For KMS that is officially supported by EnterpriseDB, you can see the official EDB documentation.
  - [EDB Docs - Transparent Data Encryption](https://www.enterprisedb.com/docs/tde/latest/)
  - [EDB Docs - Securing the data encryption key](https://www.enterprisedb.com/docs/tde/latest/key_stores/)
 
 ## Authors
-
 - [@abdulazizm41](https://www.github.com/abdulazizm41)
-
