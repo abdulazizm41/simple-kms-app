@@ -14,7 +14,7 @@ yum -y install python3 sqlite wget unzip netcat
 
 If using Ubuntu operating system, use the following command.
 ```bash
-apt -y install python3 sqlite3 wget unzip netcat
+apt -y install python3 python3*-venv sqlite3 wget unzip netcat
 ```
 
 Create Python virtual environments using `venv`.
