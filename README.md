@@ -2,7 +2,8 @@
 Simple KMS app written using Python for testing TDE feature on EnterpriseDB database platform.
 
 ## Prerequisite
-- Python 3.6 or 3.9
+- Python 3.x
+- Python 3.x-venv
 - sqlite3
 
 ## Installation
