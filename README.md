@@ -12,6 +12,11 @@ Install some required packages. If using RHEL operating system, use the followin
 yum -y install python3 sqlite wget unzip netcat
 ```
 
+If using Ubuntu operating system, use the following command.
+```bash
+apt -y install python3 sqlite3 wget unzip netcat
+```
+
 Create Python virtual environments using `venv`.
 ```bash
 python3 -m venv /PATH/TO/simple-kms-app
